@@ -53,6 +53,9 @@ Mappings:
       az1: eu-west-1a
       az2: eu-west-1b
       az3: eu-west-1c
+    ap-northeast-2:
+      az1: ap-northeast-2a
+      az3: ap-northeast-2c      
 
 Resources:
   DLTVpc:
@@ -73,12 +76,12 @@ Resources:
       AvailabilityZone: !FindInMap [RegionMap, !Ref "AWS::Region", "az1"]
       VpcId: !Ref DLTVpc
 
-  PublicSubnetB:
-    Type: AWS::EC2::Subnet
-    Properties:
-      CidrBlock: !Ref SubnetBCidrBlock
-      AvailabilityZone: !FindInMap [RegionMap, !Ref "AWS::Region", "az2"]
-      VpcId: !Ref DLTVpc
+#  PublicSubnetB:
+#    Type: AWS::EC2::Subnet
+#    Properties:
+#      CidrBlock: !Ref SubnetBCidrBlock
+#      AvailabilityZone: !FindInMap [RegionMap, !Ref "AWS::Region", "az2"]
+#      VpcId: !Ref DLTVpc
 
   PublicSubnetC:
     Type: AWS::EC2::Subnet
@@ -116,11 +119,11 @@ Resources:
       RouteTableId: !Ref MainRouteTable
       SubnetId: !Ref PublicSubnetA
 
-  RouteTableAssociationB:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId: !Ref MainRouteTable
-      SubnetId: !Ref PublicSubnetB
+#  RouteTableAssociationB:
+#    Type: AWS::EC2::SubnetRouteTableAssociation
+#    Properties:
+#      RouteTableId: !Ref MainRouteTable
+#      SubnetId: !Ref PublicSubnetB
 
   RouteTableAssociationC:
     Type: AWS::EC2::SubnetRouteTableAssociation
@@ -134,7 +137,7 @@ Outputs:
     Value: !Ref DLTVpc
   SubnetA:
     Value: !Ref PublicSubnetA
-  SubnetB:
-    Value: !Ref PublicSubnetB
+#  SubnetB:
+#    Value: !Ref PublicSubnetB
   SubnetC:
     Value: !Ref PublicSubnetC

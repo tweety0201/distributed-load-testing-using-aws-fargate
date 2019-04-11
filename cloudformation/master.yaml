@@ -109,7 +109,7 @@ Outputs:
     Value: !GetAtt Vpc.Outputs.VpcId
   SubnetA:
     Value: !GetAtt Vpc.Outputs.SubnetA
-  SubnetB:
-    Value: !GetAtt Vpc.Outputs.SubnetB
+#  SubnetB:
+#    Value: !GetAtt Vpc.Outputs.SubnetB
   SubnetC:
     Value: !GetAtt Vpc.Outputs.SubnetC

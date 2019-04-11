@@ -48,13 +48,13 @@ Resources:
   Vpc:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: "https://s3.amazonaws.com/distributed-load-testing-using-aws-fargate/templates/fargate-vpc.yaml"
+      TemplateURL: "https://s3.ap-northeast-2.amazonaws.com/mz-jinsung-dist-load-test/fargate-vpc.yaml"
 
   FargateCluster:
     Type: AWS::CloudFormation::Stack
     DependsOn: Vpc
     Properties:
-      TemplateURL: "https://s3.amazonaws.com/distributed-load-testing-using-aws-fargate/templates/fargate-cluster.yaml"
+      TemplateURL: "https://s3.ap-northeast-2.amazonaws.com/mz-jinsung-dist-load-test/fargate-cluster.yaml"
       Parameters:
         VpcId: !GetAtt Vpc.Outputs.VpcId
         TaskExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
@@ -71,7 +71,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     DependsOn: Vpc
     Properties:
-      TemplateURL: "https://s3.amazonaws.com/distributed-load-testing-using-aws-fargate/templates/pipeline.yaml"
+      TemplateURL: "https://s3.ap-northeast-2.amazonaws.com/mz-jinsung-dist-load-test/pipeline.yaml"
       Parameters:
         DockerRegistryArn: !GetAtt DockerRegistry.Arn
         MasterStackId: !Ref 'AWS::StackName'
